@@ -6,7 +6,7 @@ This private, pre-publication repository contains the machine-learned interatomi
 
 | Directory | Files | Description |
 | --- | ---: | --- |
-| `models/base/` | 12 | Base-model weights evaluated with their named dataset/reference conditioning tag. |
+| `models/base/` | 12 | Base-model artifacts associated with the dataset/reference conditioning tag named in each file. |
 | `models/fine_tuned/` | 12 | Corresponding weights after fine-tuning on the LLM-105 PBE-D3 dataset. |
 | `models/specialist/` | 5 | LLM-105 specialist models trained from scratch using five independent data partitions. |
 | `models/MODEL_MANIFEST.csv` | 1 | Model identity, conditioning tag, training stage, source datasets, size, checksum, and original archive filename. |
@@ -33,7 +33,7 @@ The model identities follow the manuscript convention:
 | C | MPtrj, SPICE2, T1x |
 | D | MPtrj, SPICE2, T1x, OMC25 |
 
-The tag in each filename is the reference-conditioning tag used to evaluate that model. The `fine_tuned` weights were fully fine-tuned on 42,096 LLM-105 configurations calculated with PBE-D3. The specialist weights used the same LLM-105 data pool and architecture but were trained from scratch.
+Each base model was jointly trained on the source datasets listed above; it was not trained separately for each tag. The tag in each filename selects the dataset/reference condition used with that model. The `fine_tuned` weights were fully fine-tuned on 42,096 LLM-105 configurations calculated with PBE-D3. The specialist weights used the same LLM-105 data pool and architecture but were trained from scratch.
 
 ## Important usage note
 
