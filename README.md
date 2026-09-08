@@ -1,6 +1,6 @@
 # LLM-105 Allegro Potentials
 
-This private, pre-publication repository contains the machine-learned interatomic-potential model files used in a study of multi-dataset Allegro models transferred and fine-tuned for LLM-105 (2,6-diamino-3,5-dinitropyrazine-1-oxide).
+This pre-publication repository contains the machine-learned interatomic-potential model files used in a study of multi-dataset Allegro models transferred and fine-tuned for LLM-105 (2,6-diamino-3,5-dinitropyrazine-1-oxide).
 
 ## Contents
 
@@ -37,7 +37,7 @@ Each base model was jointly trained on the source datasets listed above; it was 
 
 ## Important usage note
 
-These models were trained with a custom, tag-enabled Allegro/NequIP implementation. The code, model configurations, and runnable inference examples are not yet included in this private pre-publication release. The files should therefore be used only with the compatible implementation and the conditioning tag indicated by the filename.
+These models were trained with a custom, tag-enabled Allegro/NequIP implementation. The code, model configurations, and runnable inference examples are not yet included in this pre-publication release. The files should therefore be used only with the compatible implementation and the conditioning tag indicated by the filename.
 
 ## Validation scope
 
@@ -45,4 +45,4 @@ The accompanying study evaluates the models using held-out energy, force, and st
 
 ## Release status
 
-Training data, DFT inputs, code, an explicit license, and citation information will be added before public release. Until then, this repository is intended for internal sharing and review.
+Training data, DFT inputs, code, an explicit license, and citation information will be added before public release.
