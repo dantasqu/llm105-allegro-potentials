@@ -34,15 +34,3 @@ The model identities follow the manuscript convention:
 | D | MPtrj, SPICE2, T1x, OMC25 |
 
 Each base model was jointly trained on the source datasets listed above; it was not trained separately for each tag. The tag in each filename selects the dataset/reference condition used with that model. The `fine_tuned` models were fully fine-tuned on 42,096 LLM-105 configurations calculated with PBE-D3. The specialist models used the same LLM-105 data pool and architecture but were trained from scratch.
-
-## Important usage note
-
-These models were trained with a custom, tag-enabled Allegro/NequIP implementation. The code, model configurations, and runnable inference examples are not yet included in this pre-publication release. The files should therefore be used only with the compatible implementation and the conditioning tag indicated by the filename.
-
-## Validation scope
-
-The accompanying study evaluates the models using held-out energy, force, and stress errors; energy–volume behavior; 300 K NPT lattice parameters; and NVE stability. The fine-tuned OMC25-conditioned versions of Models B and D provided the most reliable overall results in those tests.
-
-## Release status
-
-Training data, DFT inputs, code, an explicit license, and citation information will be added before public release.
