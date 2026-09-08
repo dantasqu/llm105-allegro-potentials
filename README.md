@@ -6,7 +6,7 @@ This pre-publication repository contains the machine-learned interatomic-potenti
 
 | Directory | Files | Description |
 | --- | ---: | --- |
-| `models/base/` | 12 | Base-model artifacts associated with the dataset/reference conditioning tag named in each file. |
+| `models/base/` | 12 | Base models associated with the dataset/reference conditioning tag named in each file. |
 | `models/fine_tuned/` | 12 | Corresponding models after fine-tuning on the LLM-105 PBE-D3 dataset. |
 | `models/specialist/` | 5 | LLM-105 specialist models trained from scratch using five independent data partitions. |
 | `models/MODEL_MANIFEST.csv` | 1 | Model identity, conditioning tag, training stage, source datasets, size, checksum, and original archive filename. |
