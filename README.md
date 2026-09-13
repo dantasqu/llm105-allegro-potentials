@@ -11,8 +11,16 @@ This pre-publication repository contains the machine-learned interatomic-potenti
 | `models/specialist/` | 5 | LLM-105 specialist models trained from scratch using five independent data partitions. |
 | `models/MODEL_MANIFEST.csv` | 1 | Model identity, conditioning tag, training stage, source datasets, size, checksum, and original archive filename. |
 | `models/SHA256SUMS` | 1 | SHA-256 checksums for every model file. |
+| `examples/nve/` | 2 | Verified LAMMPS NVE input and 76-atom unit cell; the input creates the 304-atom `2×1×2` supercell used in the study. |
+| `notebooks/` | 1 | Google Colab reviewer demonstration that builds LAMMPS with Allegro and runs a shortened NVE check. |
 
 All model files use the `.nequip.pth` format.
+
+## Reviewer demonstration
+
+Open `notebooks/LLM105_Allegro_NVE_Colab.ipynb` in Google Colab and select a GPU runtime. The notebook follows the official NequIP/Allegro LAMMPS installation procedure, downloads only the displayed model D / OMC25 fine-tuned checkpoint, verifies its checksum and embedded atom ordering, and runs the supplied NVE protocol with the production segment shortened to 2,500 steps for reviewer-scale validation.
+
+The original `examples/nve/in.nve` is preserved unchanged. It requests 5,000 gentle-start steps at 0.1 fs followed by up to 10,000,000 production steps at 0.5 fs. Its header and absolute path identify the HPC checkpoint used when that input was archived; the notebook reports and replaces that path with the selected displayed model D / OMC25 checkpoint. It also changes the final production step count and reports that change before execution.
 
 ## Model naming
 

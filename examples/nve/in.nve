@@ -1,0 +1,59 @@
+# ============================================
+# LAMMPS Input Script: LLM-105 Relax (0 K) + NVE (300 K start)
+# Model: ft_modelB_llm105-42k_tag2_omc25_stress_corrected_20260807
+# Supercell: 2x1x2 (304 atoms)
+# Purpose: stability test — run until simulation breaks or walltime
+# ============================================
+
+units           metal
+atom_style      full
+boundary        p p p
+
+read_data       llm105_uc_std.data
+replicate       2 1 2
+
+pair_style      allegro
+pair_coeff      * * /project2/branicio_73/dantasqu/crucible/deployed_models/ft_modelB_llm105-42k_tag2_omc25_stress_corrected_20260807_gpu.nequip.pth C H N O
+
+mass            1 12.011   # C
+mass            2 1.008    # H
+mass            3 14.007   # N
+mass            4 15.999   # O
+
+neighbor        2.0 bin
+neigh_modify    every 1 delay 0 check yes
+
+thermo          50
+thermo_style    custom step pe press pxx pyy pzz pxy pxz pyz vol lx ly lz xy xz yz fnorm
+
+print "Stage 1a: atom minimization"
+min_style       cg
+minimize        1.0e-6 1.0e-8 5000 50000
+
+print "Stage 1b: cell + atom relaxation"
+fix             cellrelax all box/relax tri 0.0 vmax 0.001
+minimize        1.0e-6 1.0e-8 10000 100000
+unfix           cellrelax
+
+write_data      relaxed_0K.data
+
+print "Stage 2: NVE 300K"
+velocity        all create 300.0 123456 dist gaussian
+
+fix             NVE all nve
+
+thermo          100
+thermo_style    custom step temp pe ke etotal vol lx ly lz
+
+fix thermocsv all print 100 "$(step),$(temp),$(pe),$(ke),$(etotal),$(vol)" file nve_thermo_300K.csv screen no title "step,temp,pe,ke,etotal,vol"
+
+dump            traj all custom 1000 nve_300K.lammpstrj id type x y z
+dump_modify     traj sort id element C H N O
+
+restart         5000 restart_nve_300K.*
+
+timestep        0.0001
+run             5000
+
+timestep        0.0005
+run             10000000
