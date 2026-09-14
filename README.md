@@ -18,7 +18,7 @@ A successful run prints `CACHE_DOWNLOAD=PASS`, lists the `allegro/kk` pair style
 
 The Colab workflow was validated end to end on a free T4 GPU on 13 September 2026: LAMMPS reached 100% GPU utilization, used about 4.6 GiB of GPU memory, and exited successfully. The release cache avoids the roughly 45–70 minute source compilation on the normal T4 path; the 20-step gentle start and 100-step production NVE calculation then take only seconds.
 
-The original `examples/nve/in.nve` is preserved unchanged. It requests a `2×1×2` replication to 304 atoms, 5,000 gentle-start steps at 0.1 fs, and up to 10,000,000 production steps at 0.5 fs. That paper-scale protocol is intended for the validated multi-GPU HPC environment. The one-rank historical wrapper did not handle the replicated 304-atom case reliably in Colab, so the notebook openly uses the 76-atom cell as a reviewer smoke test while retaining the same model, atom mapping, velocity initialization, timesteps, and NVE integrator.
+The original `examples/nve/in.nve` is preserved unchanged. It requests a `2×1×2` replication to 304 atoms, 5,000 gentle-start steps at 0.1 fs, and up to 10,000,000 production steps at 0.5 fs. That paper-scale protocol is intended for the validated multi-GPU HPC environment. With the resources available in Colab, the notebook uses the 76-atom unit cell as a reviewer smoke test while retaining the same model, atom mapping, velocity initialization, timesteps, and NVE integrator.
 
 ## Contents
 

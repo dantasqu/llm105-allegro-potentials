@@ -7,6 +7,6 @@ This directory preserves the input files used for the LLM-105 stability protocol
 
 The archived input is intentionally unchanged. Its final `run 10000000` command is a production-scale calculation, and its `pair_coeff` line records the original HPC checkpoint path. It is intended for the validated multi-GPU HPC environment.
 
-For a portable reviewer check, use [`notebooks/LLM105_Allegro_NVE_Colab.ipynb`](../../notebooks/LLM105_Allegro_NVE_Colab.ipynb). The notebook verifies the selected model and inputs, downloads a checksummed T4 build of the historical Kokkos/CUDA interface (with a pinned source-build fallback), and runs the same NVE stages on the 76-atom unit cell. It does not claim to reproduce the paper-scale trajectory: the replicated 304-atom case was not reliable with this historical wrapper on one Colab GPU/rank.
+For a portable reviewer check, use [`notebooks/LLM105_Allegro_NVE_Colab.ipynb`](../../notebooks/LLM105_Allegro_NVE_Colab.ipynb). The notebook verifies the selected model and inputs, downloads a checksummed T4 build of the historical Kokkos/CUDA interface (with a pinned source-build fallback), and runs the same NVE stages on the 76-atom unit cell. With the resources available in Colab, this is intended as a reviewer smoke test; the paper-scale trajectory remains an HPC calculation.
 
 The atom-type order required by the supplied models is `C H N O`.
