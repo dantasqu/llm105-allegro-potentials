@@ -10,13 +10,13 @@ This repository contains the machine-learned interatomic-potential model files u
 2. Select **Runtime → Change runtime type → T4 GPU**.
 3. Select **Runtime → Run all**. No GitHub login or token is required.
 
-The notebook downloads and verifies a LAMMPS + Allegro Kokkos/CUDA executable for an NVIDIA T4. It then downloads only the displayed model D / OMC25 fine-tuned checkpoint, verifies the model and input files, and runs a short NVE simulation on the 76-atom unit cell. The source-build commands are included as non-executable reference documentation.
+The notebook downloads and verifies a LAMMPS + Allegro Kokkos/CUDA executable for an NVIDIA T4. It then downloads fine-tuned model D (OMC25), verifies the model and input files, and runs a short NVE simulation on the 76-atom unit cell. Optional source-build commands are included at the end of the notebook.
 
 ### Expected result
 
 A successful run verifies the LAMMPS executable, model, and inputs; reports `LAMMPS exit code: 0`; and plots finite temperature and total energy for the short NVE trajectory. The workflow was validated on an NVIDIA T4 on 13 September 2026.
 
-The original `examples/nve/in.nve` is preserved unchanged. It requests a `2×1×2` replication to 304 atoms, 5,000 gentle-start steps at 0.1 fs, and up to 10,000,000 production steps at 0.5 fs. That paper-scale protocol is intended for the validated multi-GPU HPC environment. With the resources available in Colab, the notebook uses the 76-atom unit cell as a reviewer smoke test while retaining the same model, atom mapping, velocity initialization, timesteps, and NVE integrator.
+The original `examples/nve/in.nve` is preserved unchanged. It requests a `2×1×2` replication to 304 atoms, 5,000 gentle-start steps at 0.1 fs, and up to 10,000,000 production steps at 0.5 fs. The Colab notebook uses the 76-atom unit cell for a short reproducibility test; the paper-scale protocol is intended for the validated multi-GPU HPC environment.
 
 ## Contents
 
