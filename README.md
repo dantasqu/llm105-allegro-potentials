@@ -12,13 +12,7 @@ This repository contains the machine-learned interatomic-potential model files u
 2. Select **Runtime → Change runtime type → T4 GPU**.
 3. Select **Runtime → Run all**. No GitHub login or token is required.
 
-The notebook downloads and verifies a LAMMPS + Allegro Kokkos/CUDA executable for an NVIDIA T4. It then downloads fine-tuned model D (OMC25), verifies the model and input files, and runs a short NVE simulation on the 76-atom unit cell. Optional source-build commands are included at the end of the notebook.
-
-### Expected result
-
-A successful run verifies the LAMMPS executable, model, and inputs; reports `Exit code: 0`; and plots the temperature and total energy of the short NVE trajectory.
-
-The repository includes the 304-atom input used for the HPC NVE stability study. The Colab demonstration runs the model and NVE workflow on the 76-atom unit cell.
+The notebook downloads and verifies the T4 LAMMPS + Allegro executable and fine-tuned model D (OMC25), runs an NVE simulation on the 76-atom unit cell, and plots temperature and total energy. A successful run reports `Exit code: 0`. The 304-atom HPC input is available in `examples/nve/`.
 
 ## Release downloads
 
