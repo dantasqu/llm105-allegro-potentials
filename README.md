@@ -1,12 +1,12 @@
 # LLM-105 Allegro Potentials
 
-[![Open the NVE demonstration in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dantasqu/llm105-allegro-potentials/blob/main/notebooks/LLM105_Allegro_NVE_Colab.ipynb)
+[![Open the NVE demonstration in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/dantasqu/llm105-allegro-potentials/blob/main/notebooks/LLM105_Allegro_NVE_Colab.ipynb) [![Latest release](https://img.shields.io/github/v/release/dantasqu/llm105-allegro-potentials?label=release)](https://github.com/dantasqu/llm105-allegro-potentials/releases/latest)
 
 This repository contains the machine-learned interatomic-potential model files used in a study of multi-dataset Allegro models transferred and fine-tuned for LLM-105 (2,6-diamino-3,5-dinitropyrazine-1-oxide).
 
-**[Run the reviewer NVE demonstration in Google Colab](https://colab.research.google.com/github/dantasqu/llm105-allegro-potentials/blob/main/notebooks/LLM105_Allegro_NVE_Colab.ipynb)**
+**[Run the NVE demonstration in Google Colab](https://colab.research.google.com/github/dantasqu/llm105-allegro-potentials/blob/main/notebooks/LLM105_Allegro_NVE_Colab.ipynb)**
 
-## Reviewer quick start
+## Quick start
 
 1. Click the **Open in Colab** badge above.
 2. Select **Runtime → Change runtime type → T4 GPU**.
@@ -18,11 +18,11 @@ The notebook downloads and verifies a LAMMPS + Allegro Kokkos/CUDA executable fo
 
 A successful run verifies the LAMMPS executable, model, and inputs; reports `Exit code: 0`; and plots the temperature and total energy of the short NVE trajectory.
 
-The original `examples/nve/in.nve` is preserved unchanged. It requests a `2×1×2` replication to 304 atoms, 5,000 gentle-start steps at 0.1 fs, and up to 10,000,000 production steps at 0.5 fs. The Colab notebook uses the 76-atom unit cell for a short reproducibility test; the paper-scale protocol is intended for the validated multi-GPU HPC environment.
+The repository includes the 304-atom input used for the HPC NVE stability study. The Colab demonstration runs the model and NVE workflow on the 76-atom unit cell.
 
-## Reviewer release
+## Release downloads
 
-The **[latest reviewer release](https://github.com/dantasqu/llm105-allegro-potentials/releases/latest)** provides the Colab notebook, fine-tuned model D (OMC25), the archived NVE input, the 76-atom structure, and `REVIEWER_SHA256SUMS` as separate downloads. This allows the demonstration files to be downloaded without retrieving every model in the repository.
+The **[latest release](https://github.com/dantasqu/llm105-allegro-potentials/releases/latest)** provides the Colab notebook, fine-tuned model D (OMC25), the 304-atom HPC NVE input, the 76-atom structure, and `DEMO_SHA256SUMS` as separate downloads. This allows the demonstration files to be downloaded without retrieving every model in the repository.
 
 ## Contents
 

@@ -1,12 +1,10 @@
 # LLM-105 NVE example
 
-This directory preserves the input files used for the LLM-105 stability protocol:
+This directory contains the input files for the LLM-105 NVE stability simulation:
 
 - `llm105_uc_std.data` is the 76-atom unit cell.
-- `in.nve` replicates it `2×1×2` to 304 atoms, relaxes the atoms and cell, initializes velocities at 300 K, performs a 0.5 ps gentle start at a 0.1 fs timestep, and then begins NVE production at a 0.5 fs timestep.
+- `in.nve` creates the 304-atom `2×1×2` supercell and runs the HPC NVE workflow.
 
-The archived input is intentionally unchanged. Its final `run 10000000` command is a production-scale calculation, and its `pair_coeff` line records the original HPC checkpoint path. It is intended for the validated multi-GPU HPC environment.
-
-For a portable reviewer check, **[open the NVE demonstration in Google Colab](https://colab.research.google.com/github/dantasqu/llm105-allegro-potentials/blob/main/notebooks/LLM105_Allegro_NVE_Colab.ipynb)**. The notebook verifies the selected model and inputs, downloads a checksummed LAMMPS Kokkos/CUDA executable for an NVIDIA T4, and runs the same NVE stages on the 76-atom unit cell. With the resources available in Colab, this is a smoke test for the paper-scale HPC stability study.
+For a portable GPU demonstration, **[open the NVE notebook in Google Colab](https://colab.research.google.com/github/dantasqu/llm105-allegro-potentials/blob/main/notebooks/LLM105_Allegro_NVE_Colab.ipynb)**. The notebook configures the files, verifies the installation, and runs the 76-atom NVE simulation on an NVIDIA T4.
 
 The atom-type order required by the supplied models is `C H N O`.
